@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,6 +70,42 @@ public class SlangWord {
             sizeMap++;
         }
         scanner.close();
+    }
+    
+    public String[][] getData() {
+        String[][] s = new String[sizeMap][3];
+        Set<String> slagList_set = map.keySet();
+        Object[] slagList_array = slagList_set.toArray();
+        int index=0;
+        for(int i=0; i < sizeMap; i++) {
+            s[i][0] = String.valueOf(i); // Lưu trữ số thứ tự
+            s[i][1] = (String) slagList_array[index]; // Lưu trữ lag
+            List<String> meaning = map.get(slagList_array[index]);
+            s[i][2] = meaning.get(0);
+            
+            for(int j=1;j<meaning.size();j++) {
+                if(i<sizeMap) i++;
+                s[i][0] = String.valueOf(i); // Lưu trữ số thứ tự
+                s[i][1] = (String) slagList_array[index]; // Lưu trữ lag
+                s[i][2] = meaning.get(j);
+            }
+            index++;
+        }
+        return s;
+    }
+    
+    public String[][] getMeaning(String slag) {
+        List<String> List_Meaning = map.get(slag);
+        if(List_Meaning == null) {
+            return null;
+        }
+        String[][] s = new String[List_Meaning.size()][3];
+        for(int i=0;i<List_Meaning.size();i++) {
+            s[i][0] = String.valueOf(i);
+            s[i][1] = slag;
+            s[i][2] = List_Meaning.get(i);
+        }
+        return s;
     }
     
     
