@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -172,7 +173,6 @@ public class S_L_D_E extends javax.swing.JFrame {
                 public void changedUpdate(DocumentEvent e) {
                     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
                 }
-                
         });
         }
         if(n==1) {
@@ -206,7 +206,19 @@ public class S_L_D_E extends javax.swing.JFrame {
     }//GEN-LAST:event_Search_buttonActionPerformed
 
     private void Delete_slangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_slangActionPerformed
-
+        SlangWord slangword = new SlangWord();
+        DefaultTableModel model;
+        model = (DefaultTableModel) tableData.getModel();
+        int row = tableData.getSelectedRow();
+        int col = tableData.getSelectedColumn();
+        if(row==-1||col==-1) {
+            return;
+        }
+        String data = (String) tableData.getValueAt(row, 1);
+        int n = JOptionPane.showConfirmDialog(this, "Ban muon xoa tu nay khong", "An Inane Question", JOptionPane.YES_NO_OPTION);
+        if(n==0) {
+            
+        }
     }//GEN-LAST:event_Delete_slangActionPerformed
 
     private void Edit_SlangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_SlangActionPerformed

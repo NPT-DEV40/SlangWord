@@ -7,6 +7,7 @@ package slangword;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -72,6 +73,31 @@ public class SlangWord {
         scanner.close();
     }
     
+    public void saveFile(String file) {
+        try {
+            PrintWriter printWriter = new PrintWriter(new File(file));
+            StringBuilder stringBuilder = new StringBuilder();
+            
+            stringBuilder.append("Slag`Meaning\n");
+            String[][] s = new String[map.size()][3];
+            Set<String> keySet = map.keySet();
+            Object[] keyArray = keySet.toArray();
+            for(int i=0;i<map.size();i++) {
+                Integer in = i + 1;
+                s[i][0] = in.toString();
+                s[i][1] = (String) keyArray[i];
+                List<String> meaning = map.get(keyArray[i]);
+                stringBuilder.append(s[i][1] + "`" + meaning.get(0));
+                for (int j = 1; j < meaning.size(); j++) {
+                        stringBuilder.append("|" + meaning.get(j));
+                }
+                stringBuilder.append("\n");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SlangWord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public String[][] getData() {
         String[][] s = new String[sizeMap][3];
         Set<String> slagList_set = map.keySet();
@@ -106,6 +132,19 @@ public class SlangWord {
             s[i][2] = List_Meaning.get(i);
         }
         return s;
+    }
+    
+    public void delete(String slagString,String value) {
+        List<String> Meaning_List = map.get(slagString);
+        int index = Meaning_List.indexOf(value);
+        if(Meaning_List.size()==1) {
+            map.remove(slagString);
+        } else {
+            Meaning_List.remove(index);
+            map.put(slagString, Meaning_List);
+        }
+        sizeMap--;
+        
     }
     
     
