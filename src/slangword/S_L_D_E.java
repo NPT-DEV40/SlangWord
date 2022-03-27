@@ -4,6 +4,7 @@
  */
 package slangword;
 
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -23,6 +24,24 @@ public class S_L_D_E extends javax.swing.JFrame {
      */
     public S_L_D_E() {
         initComponents();
+        
+        SlangWord slangword = new SlangWord();
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableData.getModel());
+        Vector main = new Vector();
+        Vector header = new Vector();
+        header.add("STT");
+        header.add("Slang Word");
+        header.add("Meaning");
+        String k[][] = new String[slangword.sizeMap][slangword.sizeMap];
+        k = slangword.getData();
+        for(int i=0;i < slangword.sizeMap;i++) {
+            Vector row = new Vector();
+            row.add(k[i][0]);
+            row.add(k[i][1]);
+            row.add(k[i][2]);
+            main.add(row);
+        }
+        tableData.setModel(new DefaultTableModel(main,header));
     }
 
     /**
@@ -214,15 +233,28 @@ public class S_L_D_E extends javax.swing.JFrame {
         if(row==-1||col==-1) {
             return;
         }
-        String data = (String) tableData.getValueAt(row, 1);
+        String Data = (String) tableData.getValueAt(row, 1);
         int n = JOptionPane.showConfirmDialog(this, "Ban muon xoa tu nay khong", "An Inane Question", JOptionPane.YES_NO_OPTION);
         if(n==0) {
-            
+            slangword.delete(Data, (String) tableData.getValueAt(row, 2));
+            model.removeRow(row);
+            JOptionPane.showMessageDialog(this, "Da xoa");
         }
     }//GEN-LAST:event_Delete_slangActionPerformed
 
     private void Edit_SlangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_SlangActionPerformed
-
+        SlangWord slangword = new SlangWord();
+        String[][] result = new String[slangword.sizeMap][100];
+        int row = tableData.getSelectedRow();
+        int col = tableData.getSelectedColumn();
+        if (row == col && row == -1)
+                return;
+        String Data = (String) tableData.getValueAt(row, col);
+        if(col == 2) {
+            slangword.set((String) tableData.getValueAt(row, 1), result[row][2], (String) tableData.getValueAt(row, 2));
+            JOptionPane.showMessageDialog(this, "Da them vao");
+        }
+        tableData.setFocusable(false);
     }//GEN-LAST:event_Edit_SlangActionPerformed
 
     /**

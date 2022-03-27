@@ -143,8 +143,45 @@ public class SlangWord {
             Meaning_List.remove(index);
             map.put(slagString, Meaning_List);
         }
-        sizeMap--;
-        
+        sizeMap--;    
+    }
+    
+    public String[][] readHistory() {
+        List<String> historySlag = new ArrayList<>();
+		List<String> historyDefinition = new ArrayList<>();
+		try {
+			Scanner scanner = new Scanner(new File(File_History));
+			scanner.useDelimiter("`");
+			String temp = scanner.next();
+			String[] part = scanner.next().split("\n");
+			historySlag.add(temp);
+			historyDefinition.add(part[0]);
+			while (scanner.hasNext()) {
+				temp = part[1];
+				part = scanner.next().split("\n");
+				historySlag.add(temp);
+				historyDefinition.add(part[0]);
+			}
+			scanner.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int size = historySlag.size();
+		String s[][] = new String[size][3];
+		for (int i = 0; i < size; i++) {
+			s[size - i - 1][0] = String.valueOf(size - i);
+			s[size - i - 1][1] = historySlag.get(i);
+			s[size - i - 1][2] = historyDefinition.get(i);
+		}
+		return s;
+    }
+    
+    public void set(String slag, String oldValue, String newValue) {
+        List<String> meaning = map.get(slag);
+        int index = meaning.indexOf(oldValue);
+        meaning.set(index, newValue);
+        this.saveFile(File_SlangWord);
     }
     
     
