@@ -104,7 +104,7 @@ public class Add extends javax.swing.JFrame {
             return;
         }
         
-        if(slangword.checkSlag(slag)) {
+        if(slangword.checkSlang(slag)) {
         Object[] options = { "Overwrite", "Duplicate" };
                 int n = JOptionPane.showOptionDialog(this,
                                 "Slang `" + slag + "` da co trong slang list", "A Silly Question",

@@ -105,7 +105,7 @@ public class Random_slangword extends javax.swing.JFrame {
     private void Random_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Random_buttonActionPerformed
         SlangWord slangWord = new SlangWord();
         String[] k = new String [100];
-        k=slangWord.Random();
+        k=slangWord.random();
         text_slag.setText(k[0]);
         text_meaning.setText(k[1]);
     }//GEN-LAST:event_Random_buttonActionPerformed
