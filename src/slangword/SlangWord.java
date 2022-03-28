@@ -6,6 +6,7 @@ package slangword;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -60,7 +61,6 @@ public class SlangWord {
                 meaning = map.get(slag); // Lấy value cảu key muốốn tìm kiếm
             }
             if(part[0].contains("|")) {
-                System.out.println(part[0]);
                 String[] tmp = part[0].split("\\|");
                 Collections.addAll(meaning,tmp);
                 sizeMap += tmp.length - 1;
@@ -146,6 +146,13 @@ public class SlangWord {
         sizeMap--;    
     }
     
+    public void saveHistory(String slag, String meaning) throws IOException {
+        File file = new File(File_History);
+        FileWriter fw = new FileWriter(file, true);
+        fw.write(slag + "`" + meaning + "\n");
+        fw.close();
+    }
+    
     public String[][] readHistory() {
         List<String> historySlag = new ArrayList<>();
 		List<String> historyDefinition = new ArrayList<>();
@@ -187,7 +194,6 @@ public class SlangWord {
     
     public static void main(String[] args) {
         SlangWord slangword = new SlangWord();
-        System.out.println(slangword);
     }
     
 }

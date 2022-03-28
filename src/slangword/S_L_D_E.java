@@ -4,9 +4,11 @@
  */
 package slangword;
 
+import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
@@ -55,22 +57,24 @@ public class S_L_D_E extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Search_text = new javax.swing.JTextField();
+        Search_slag = new javax.swing.JTextField();
         Search_button = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
         Delete_slang = new javax.swing.JButton();
         Edit_Slang = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        Search_definition = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("                Search");
 
-        jLabel2.setText("Slang Word");
+        jLabel2.setText("Slag");
 
-        Search_text.addActionListener(new java.awt.event.ActionListener() {
+        Search_slag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Search_textActionPerformed(evt);
+                Search_slagActionPerformed(evt);
             }
         });
 
@@ -88,7 +92,15 @@ public class S_L_D_E extends javax.swing.JFrame {
             new String [] {
                 "STT", "Slang Word", "Meaning"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableData);
 
         Delete_slang.setText("DELETE");
@@ -105,45 +117,52 @@ public class S_L_D_E extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Definition");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(Search_text, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Search_slag, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Search_definition, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(274, 274, 274)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(160, 160, 160)
-                                .addComponent(Search_button)
-                                .addGap(105, 105, 105)
-                                .addComponent(Delete_slang)
-                                .addGap(116, 116, 116)
-                                .addComponent(Edit_Slang)))
+                        .addGap(167, 167, 167)
+                        .addComponent(Search_button)
+                        .addGap(113, 113, 113)
+                        .addComponent(Delete_slang)
+                        .addGap(112, 112, 112)
+                        .addComponent(Edit_Slang)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(275, 275, 275))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Search_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Search_slag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(Search_definition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
@@ -157,71 +176,69 @@ public class S_L_D_E extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Search_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_textActionPerformed
+    private void Search_slagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_slagActionPerformed
 
-    }//GEN-LAST:event_Search_textActionPerformed
+    }//GEN-LAST:event_Search_slagActionPerformed
 
     private void Search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_buttonActionPerformed
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableData.getModel());
-        Object[] options = {"Find by slag name","Find by definition"};
-        int n = JOptionPane.showOptionDialog(this, "Choose mode " + "you want to excute?", "Choose mode find", 
-                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
         tableData.setRowSorter(rowSorter);
-        if(n==0) {
-            Search_text.getDocument().addDocumentListener(new DocumentListener() {
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(Search_text.getText().trim().length() ==0 ){
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_text.getText().trim()));
-                    }
-                    
+        Search_slag.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if(Search_slag.getText().trim().length() ==0 ){
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_slag.getText().trim()));
                 }
 
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(Search_text.getText().trim().length() ==0 ){
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_text.getText().trim()));
-                    }
-                }
+            }
 
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(Search_slag.getText().trim().length() ==0 ){
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_slag.getText().trim()));
                 }
-        });
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+    });   
+    Search_definition.getDocument().addDocumentListener(new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            if(Search_definition.getText().trim().length() ==0 ){
+                rowSorter.setRowFilter(null);
+            } else {
+                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_definition.getText().trim()));
+                List<? extends RowSorter.SortKey> tmp = rowSorter.getSortKeys();
+                for(RowSorter.SortKey aString : tmp) {
+                    System.out.println(aString);
+                }
+            }
+
         }
-        if(n==1) {
-            Search_text.getDocument().addDocumentListener(new DocumentListener() {
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(Search_text.getText().trim().length() ==0 ){
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_text.getText().trim()));
-                    }
-                    
-                }
 
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(Search_text.getText().trim().length() ==0 ){
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_text.getText().trim()));
-                    }
-                }
-
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                }
-                
-        });
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            if(Search_definition.getText().trim().length() ==0 ){
+                rowSorter.setRowFilter(null);
+            } else {
+                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_definition.getText().trim()));
+                List<? extends RowSorter.SortKey> tmp = rowSorter.getSortKeys();
+                System.out.println(tmp);
+            }
         }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    });  
     }//GEN-LAST:event_Search_buttonActionPerformed
 
     private void Delete_slangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_slangActionPerformed
@@ -296,9 +313,11 @@ public class S_L_D_E extends javax.swing.JFrame {
     private javax.swing.JButton Delete_slang;
     private javax.swing.JButton Edit_Slang;
     private javax.swing.JButton Search_button;
-    private javax.swing.JTextField Search_text;
+    private javax.swing.JTextField Search_definition;
+    private javax.swing.JTextField Search_slag;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableData;
     // End of variables declaration//GEN-END:variables
