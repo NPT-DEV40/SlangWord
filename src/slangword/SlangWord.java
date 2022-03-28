@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 public class SlangWord {
     private TreeMap<String, List<String>> map = new TreeMap<>(); // Khởi tạo treemap với slag là 1 String và meaning là list string
     int sizeMap; // Độ dài
+    public static  SlangWord obj = new SlangWord();
     private String File_SlangWord = "SlangWord.txt";
     private String File_History = "SlangWord_History.txt";
     private String File_Original = "SlangWord_1.txt";
@@ -96,6 +97,17 @@ public class SlangWord {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(SlangWord.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static SlangWord getInstance() {
+        if(obj == null) {
+            synchronized (SlangWord.class) {
+                if(obj==null) {
+                    obj = new SlangWord();
+                }
+            }
+        }
+        return obj;
     }
     
     public String[][] getData() {
@@ -191,9 +203,57 @@ public class SlangWord {
         this.saveFile(File_SlangWord);
     }
     
+    public boolean checkSlag(String slag) {
+        for(String keyString : map.keySet()) {
+            if(keyString.equals(slag)) {
+                return true;
+            }
+        }
+        return false;
+    }
     
-    public static void main(String[] args) {
-        SlangWord slangword = new SlangWord();
+    public void addNew(String slag, String meaning) {
+        List<String> meaningList = new ArrayList<>();
+        meaningList.add(meaning);
+        sizeMap++;
+        map.put(slag, meaningList);
+        this.saveFile(File_SlangWord);
+    }
+    
+    public void addDuplicate(String slag, String meaning) {
+        List<String> meaningList = map.get(slag);
+        meaningList.add(meaning);
+        sizeMap++;
+        map.put(slag, meaningList);
+        this.saveFile(File_SlangWord);
+    }
+    
+    public void addOverwrite(String slag, String meaning) {
+        List<String> meaningList = map.get(slag);
+        meaningList.set(0, meaning);
+        map.put(slag, meaningList);
+        this.saveFile(File_SlangWord);
+    }
+    
+    public static int randInt(int min,int max) {
+        return (min + (int) (Math.random() * max));
+    }
+    
+    public String[] Random() {
+        int min=0;
+        int max = sizeMap - 1;
+        int rand = randInt(min, max);
+        String s[] = new String[2];
+        int index=0;
+        for(String keyString:map.keySet()) {
+            if(index == rand) {
+                s[0] = keyString;
+                s[1] = map.get(keyString).get(0);
+                break;
+            }
+            index++;
+        }
+        return s;
     }
     
 }
