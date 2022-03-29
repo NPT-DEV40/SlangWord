@@ -225,7 +225,7 @@ public class S_L_D_E extends javax.swing.JFrame {
         header.add("Meaning");
         String[][] temp = null;
         if(key_slag.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Please input slang word you want to find", "Inane error",
+            JOptionPane.showMessageDialog(this, "Nhap tu muon tim kiem vao", "Inane error",
 						JOptionPane.ERROR_MESSAGE);
             return;
         }
