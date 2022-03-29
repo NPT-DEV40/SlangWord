@@ -34,6 +34,7 @@ public class Random_slangword extends javax.swing.JFrame {
         text_slag = new javax.swing.JTextField();
         text_meaning = new javax.swing.JTextField();
         Random_button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -51,6 +52,13 @@ public class Random_slangword extends javax.swing.JFrame {
         Random_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Random_buttonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -77,8 +85,10 @@ public class Random_slangword extends javax.swing.JFrame {
                                 .addComponent(text_slag)))))
                 .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addGap(75, 75, 75)
                 .addComponent(Random_button)
+                .addGap(70, 70, 70)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,9 +104,11 @@ public class Random_slangword extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(text_meaning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(Random_button)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Random_button)
+                    .addComponent(jButton1))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -109,6 +121,12 @@ public class Random_slangword extends javax.swing.JFrame {
         text_slag.setText(k[0]);
         text_meaning.setText(k[1]);
     }//GEN-LAST:event_Random_buttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,6 +165,7 @@ public class Random_slangword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Random_button;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

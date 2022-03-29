@@ -81,6 +81,11 @@ public class Slag_Quiz extends javax.swing.JFrame {
         Text_Ques.setText("jLabel2");
 
         B_B.setText("BACK");
+        B_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +169,12 @@ public class Slag_Quiz extends javax.swing.JFrame {
     private void ans_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ans_4ActionPerformed
         this.answer(4);
     }//GEN-LAST:event_ans_4ActionPerformed
+
+    private void B_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BActionPerformed
+        Menu_Quiz menu_q = new Menu_Quiz();
+        menu_q.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B_BActionPerformed
 
     /**
      * @param args the command line arguments

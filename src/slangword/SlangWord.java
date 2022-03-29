@@ -24,7 +24,7 @@ public class SlangWord {
     private static SlangWord obj = new SlangWord();
     int sizeMap;
     private String File_SlangWord = "SlangWord.txt";
-    private String File_ORIGINAL = "SlangWord_gox.txt";
+    private String File_ORIGINAL = "SlangWord_1.txt";
     private String File_History = "History.txt";
     
     SlangWord() {
@@ -36,7 +36,6 @@ public class SlangWord {
             File_History = current + "\\" + File_History;
             readFile(File_SlangWord);
         } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
         }
     }
@@ -45,7 +44,7 @@ public class SlangWord {
         if (obj == null) {
                 synchronized (SlangWord.class) { 
                         if (obj == null) {
-                                obj = new SlangWord();// instance will be created at request time
+                                obj = new SlangWord();
                         }
                 }
         }
@@ -72,12 +71,10 @@ public class SlangWord {
 				}
 				stringBuilder.append("\n");
 			}
-			// System.out.println(stringBuilder.toString());
 			printWriter.write(stringBuilder.toString());
 			printWriter.close();
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e);
 		}
 	}
@@ -89,9 +86,7 @@ public class SlangWord {
 		scanner.useDelimiter("`");
 		scanner.next();
 		String temp = scanner.next();
-//                System.out.println(temp);
 		String[] part = temp.split("\n");
-//                System.out.println(part[1]);
 		int i = 0;
 		int flag = 0;
 		sizeMap = 0;
@@ -99,28 +94,19 @@ public class SlangWord {
 			List<String> meaning = new ArrayList<String>();
 			slag = part[1].trim();
 			temp = scanner.next();
-//                        System.out.println(temp);
 			part = temp.split("\n");
-//                        System.err.println(part);
 			if (map.containsKey(slag)) {
 				meaning = map.get(slag);
 			}
 			if (part[0].contains("|")) {
-//				System.out.println(part[0]);
 				String[] d = (part[0]).split("\\|");
-//				for (int ii = 0; ii < d.length; ii++)
-//					System.out.println(d[ii]);
+
 				Collections.addAll(meaning, d);
 				sizeMap += d.length - 1;
 			} else {
 				meaning.add(part[0]);
 			}
-			// map.put(slag.trim(), meaning);
-//                        System.out.println(slag);
-//                        for(String a:meaning) {
-//                        System.out.println(a);
-//                        }
-			map.put(slag, meaning);
+			map.put(slag.trim(), meaning);
 			i++;
 			sizeMap++;
 		}
@@ -139,14 +125,12 @@ public class SlangWord {
 			s[i][1] = (String) slagList[index];
 			List<String> meaning = map.get(slagList[index]);
 			s[i][2] = meaning.get(0);			
-//                        System.out.println(s[i][0] + "\t" + s[i][1] + "\t" + s[i][2]);
 			for (int j = 1; j < meaning.size(); j++) {
 				if (i < sizeMap)
 					i++;
 				s[i][0] = String.valueOf(i);
 				s[i][1] = (String) slagList[index];
 				s[i][2] = meaning.get(j);
-//				System.out.println(s[i][0] + "\t" + s[i][1] + "\t" + s[i][2]);
 			}
 			index++;
 		}
@@ -177,7 +161,6 @@ public class SlangWord {
 	}
 
 	public void saveHistory(String slag, String meaning) throws Exception {
-		// String file = "history.txt";
 		File file1 = new File(File_History);
 		FileWriter fr = new FileWriter(file1, true);
 		fr.write(slag + "`" + meaning + "\n");
@@ -202,7 +185,6 @@ public class SlangWord {
 			}
 			scanner.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		int size = historySlag.size();
@@ -216,7 +198,6 @@ public class SlangWord {
 	}
 
 	public String[][] findDefinition(String query) {
-		// Get all slang contain key
 		List<String> keyList = new ArrayList<>();
 		List<String> meaningList = new ArrayList<>();
 		for (Entry<String, List<String>> entry : map.entrySet()) {
@@ -244,7 +225,6 @@ public class SlangWord {
 			readFile(File_ORIGINAL);
 			this.saveFile(File_SlangWord);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -286,23 +266,24 @@ public class SlangWord {
 	}
 
 	public boolean checkSlang(String slag) {
-		for (String keyIro : map.keySet()) {
-			if (keyIro.equals(slag))
+		for (String keyString : map.keySet()) {
+			if (keyString.equals(slag))
 				return true;
 		}
 		return false;
 	}
+        
+        public static int randInt(int minimum, int maximum) {
+		return (minimum + (int) (Math.random() * maximum));
+	}
 
 	public String[] random() {
-		// Random a number
-		int minimun = 0;
-		int maximun = map.size() - 1;
-		int rand = randInt(minimun, maximun);
-		// Get slang meaning
+		int min = 0;
+		int max = map.size() - 1;
+		int rand = randInt(min, max);
 		String s[] = new String[2];
 		int index = 0;
 		for (String key : map.keySet()) {
-			// System.out.println(key);
 			if (index == rand) {
 				s[0] = key;
 				s[1] = map.get(key).get(0);
@@ -313,14 +294,10 @@ public class SlangWord {
 		return s;
 	}
 
-	public static int randInt(int minimum, int maximum) {
-		return (minimum + (int) (Math.random() * maximum));
-	}
 
 	public String[] quiz(int type) {
 		String s[] = new String[6];
 		if (type == 1) {
-			// Random a number
 			String[] slangRandom = this.random();
 			s[0] = slangRandom[0];
 			int rand = randInt(1, 4);
@@ -338,7 +315,6 @@ public class SlangWord {
 				}
 			}
 		} else {
-			// Random a number
 			String[] slangRandom = this.random();
 			s[0] = slangRandom[1];
 			int rand = randInt(1, 4);

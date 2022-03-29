@@ -65,6 +65,9 @@ public class S_L_D_E extends javax.swing.JFrame {
         Edit_Slang = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Search_definition = new javax.swing.JTextField();
+        Search_button1 = new javax.swing.JButton();
+        List_button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +81,7 @@ public class S_L_D_E extends javax.swing.JFrame {
             }
         });
 
-        Search_button.setText("Search");
+        Search_button.setText("Search Slag");
         Search_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Search_buttonActionPerformed(evt);
@@ -119,38 +122,65 @@ public class S_L_D_E extends javax.swing.JFrame {
 
         jLabel3.setText("Definition");
 
+        Search_button1.setText("Search definition");
+        Search_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Search_button1ActionPerformed(evt);
+            }
+        });
+
+        List_button.setText("List");
+        List_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                List_buttonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Search_slag, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Search_definition, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(Search_button)
-                        .addGap(113, 113, 113)
-                        .addComponent(Delete_slang)
-                        .addGap(112, 112, 112)
-                        .addComponent(Edit_Slang)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)))
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(275, 275, 275))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Search_slag, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Search_definition, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Search_button)
+                                .addGap(43, 43, 43)
+                                .addComponent(Delete_slang)
+                                .addGap(51, 51, 51)
+                                .addComponent(List_button)))
+                        .addGap(59, 59, 59)
+                        .addComponent(Edit_Slang)
+                        .addGap(32, 32, 32)
+                        .addComponent(Search_button1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,12 +195,16 @@ public class S_L_D_E extends javax.swing.JFrame {
                     .addComponent(Search_definition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Search_button)
+                    .addComponent(List_button)
+                    .addComponent(Edit_Slang)
+                    .addComponent(Search_button1)
                     .addComponent(Delete_slang)
-                    .addComponent(Edit_Slang))
-                .addGap(32, 32, 32))
+                    .addComponent(Search_button))
+                .addGap(36, 36, 36)
+                .addComponent(jButton1)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -181,67 +215,43 @@ public class S_L_D_E extends javax.swing.JFrame {
     }//GEN-LAST:event_Search_slagActionPerformed
 
     private void Search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_buttonActionPerformed
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableData.getModel());
-        tableData.setRowSorter(rowSorter);
-        Search_slag.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                if(Search_slag.getText().trim().length() ==0 ){
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_slag.getText().trim()));
-                }
+        SlangWord slangword = new SlangWord();
+        String key_slag = Search_slag.getText();
 
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                if(Search_slag.getText().trim().length() ==0 ){
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_slag.getText().trim()));
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-    });   
+        Vector main = new Vector();
+        Vector header = new Vector();
+        header.add("STT");
+        header.add("Slang Word");
+        header.add("Meaning");
+        String[][] temp = null;
+        if(key_slag.trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please input slang word you want to find", "Inane error",
+						JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
-    Search_definition.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            if(Search_definition.getText().trim().length() ==0 ){
-                rowSorter.setRowFilter(null);
-            } else {
-                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_definition.getText().trim()));
-                List<? extends RowSorter.SortKey> tmp = rowSorter.getSortKeys();
-                for(RowSorter.SortKey aString : tmp) {
-                    System.out.println(aString);
-                }
-            }
-
-        }
-
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            if(Search_definition.getText().trim().length() ==0 ){
-                rowSorter.setRowFilter(null);
-            } else {
-                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + Search_definition.getText().trim()));
-                List<? extends RowSorter.SortKey> tmp = rowSorter.getSortKeys();
-                System.out.println(tmp);
+        temp = slangword.getMeaning(key_slag);
+        if(temp == null) {
+            JOptionPane.showMessageDialog(this, "Khong the tim thay","Inane error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (int i = 0; i < temp.length; i++) {
+                    Vector row = new Vector();
+                    row.add(temp[i][0]);
+                    row.add(temp[i][1]);  
+                    row.add(temp[i][2]);  
+                    main.add(row);
             }
         }
-
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        tableData.setModel(new DefaultTableModel(main,header));
+        try {
+                for (int ii = 0; ii < temp.length; ii++)
+                        slangword.saveHistory(temp[ii][1], temp[ii][2]);
+        } catch (Exception e1) {
+                e1.printStackTrace();
         }
-    });  
     }//GEN-LAST:event_Search_buttonActionPerformed
 
+    
     private void Delete_slangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_slangActionPerformed
         SlangWord slangword = new SlangWord();
         DefaultTableModel model;
@@ -279,6 +289,70 @@ public class S_L_D_E extends javax.swing.JFrame {
         }
         tableData.setFocusable(false);
     }//GEN-LAST:event_Edit_SlangActionPerformed
+
+    private void Search_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_button1ActionPerformed
+        SlangWord slangword = new SlangWord();
+        String key_definition = Search_definition.getText();
+
+        Vector main = new Vector();
+        Vector header = new Vector();
+        header.add("STT");
+        header.add("Slang Word");
+        header.add("Meaning");
+        String[][] temp = null;
+        if(key_definition.trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please input slang word you want to find", "Inane error",
+						JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        temp = slangword.findDefinition(key_definition);
+        if(temp == null) {
+            JOptionPane.showMessageDialog(this, "Khong the tim thay","Inane error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (int i = 0; i < temp.length; i++) {
+                    Vector row = new Vector();
+                    row.add(temp[i][0]);
+                    row.add(temp[i][1]);  
+                    row.add(temp[i][2]);  
+                    main.add(row);
+            }
+        }
+        tableData.setModel(new DefaultTableModel(main,header));
+        
+        try {
+                for (int ii = 0; ii < temp.length; ii++)
+                        slangword.saveHistory(temp[ii][1], temp[ii][2]);
+        } catch (Exception e1) {
+                e1.printStackTrace();
+        }
+    }//GEN-LAST:event_Search_button1ActionPerformed
+
+    private void List_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_List_buttonActionPerformed
+        SlangWord slangword = new SlangWord();
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tableData.getModel());
+        Vector main = new Vector();
+        Vector header = new Vector();
+        header.add("STT");
+        header.add("Slang Word");
+        header.add("Meaning");
+        String k[][] = new String[slangword.sizeMap][slangword.sizeMap];
+        k = slangword.getData();
+        for(int i=0;i < slangword.sizeMap;i++) {
+            Vector row = new Vector();
+            row.add(k[i][0]);
+            row.add(k[i][1]);
+            row.add(k[i][2]);
+            main.add(row);
+        }
+        tableData.setModel(new DefaultTableModel(main,header));
+    }//GEN-LAST:event_List_buttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,9 +392,12 @@ public class S_L_D_E extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete_slang;
     private javax.swing.JButton Edit_Slang;
+    private javax.swing.JButton List_button;
     private javax.swing.JButton Search_button;
+    private javax.swing.JButton Search_button1;
     private javax.swing.JTextField Search_definition;
     private javax.swing.JTextField Search_slag;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -3,10 +3,10 @@ Slag`Meaning
 $`Dollar| money
 $_$`Has money
 %)`Drunk| giddy
-&`Ajj
+&`And
 &APOS;S`Wrongly displayed 's
 &HEARTS;`HTML code for a heart
-'EM`lli
+'EM`Them
 (!)`Sarcasm
 ('_')`Emoticon Representing Boredom
 (.)(.)`Female Breasts
@@ -409,7 +409,8 @@ ALT`Alternative character in RPG
 ALU`Arithmetic Logic Unit
 ALV`Asta La Vista| goodbye
 ALWP`Actual Laughter Was Produced
-AMA`Ask Me Anything
+AMA`Ask Me Anything| Against Medical Advice
+AMAA`Ask Me Almost Anything
 AMAP`As Much As Possible
 AMC`American Motors Corportation
 AMD`Advanced Micro Devices
@@ -589,7 +590,6 @@ AYT`Are You There?
 AYW`As You Wish
 AYYO`Hi, hello
 AZN`Asian
-Against Medical Advice`Ask Me Almost Anything
 B`Be
 B&`Banned| Band
 B&B`Bed & Breakfast
@@ -902,7 +902,8 @@ BOLO`Be On The Lookout
 BOLSHY`Bolshevik| communist| Argumentative
 BOLTOP`Better On Lips Than On Paper
 BOM`Bro| dude| friend
-BOMB`Something really bad
+BOMB`Something really bad| Something really good
+BOMBSHELL`Very attractive woman
 BOMM`BOOMM
 BONE UP`Learn about| revise
 BONG`Water pipe for smoking dope
@@ -1104,7 +1105,8 @@ C/O`Class Of ...
 C1`Affirmative| Roger that
 C2C`Consumer to Consumer| Cam to Cam
 C4`Plastic explosive
-C4C`Comment for Comment
+C4C`Comment for Comment| Cam for Cam
+C:`Very happy
 CAAC`Cool As A Cucumber
 CAB`Misspelling of CBA
 CACHAI`Do you understand?
@@ -1481,7 +1483,6 @@ CYOOT`Cute
 CYPH`To Share A Smoke
 CYT`See You Tomorrow
 CZ`Condition Zero (game)
-Cam for Cam`Very happy
 D BO`Steal
 D&D`Dungeons and Dragons
 D&M`Deep and Meaningful
@@ -1994,7 +1995,8 @@ EPOS`Electronic Point Of Sale
 EPROM`Electronically Programmable ROM
 EQ`EverQuest (game)
 EQE`Easy Quick Efficient
-ER`Emergency Room
+ER`Emergency Room| Indicating hesitation
+ERB`Herb| Marijuana
 ERK`Irk| annoy
 ERM`Awkward conversation filler
 ERO`Erotic
@@ -2866,7 +2868,8 @@ HOOAH`HUA
 HOOCHIE`Over made up woman with trashy dress sense
 HOOCHIFIED`Dressed Provocatively
 HOOD`Neighborhood| ghetto
-HOODIE`Hooded sweatshirt
+HOODIE`Hooded sweatshirt| Person wearing a hooded sweatshirt
+HOOK ME UP`Share with me
 HOOKED`Addicted
 HOOPS`Basketabll
 HOOROO`Goodbye
@@ -3387,7 +3390,6 @@ IYTT`If You Think That
 IYW`If You Want/Will
 IYWW`If You Were Wondering
 IZ`Is| it's
-Indicating hesitation`Herb| Marijuana
 J`Joking
 J CAT`mentally unstable person
 J DUB`Jehovah's Witness
@@ -5389,7 +5391,6 @@ PX`Post Exchange| Part Exchange
 PYP`Play Your Position|Play Your Position
 PYT`Pretty Young Thing|Pretty Young Thing
 PZ`Peace
-Person wearing a hooded sweatshirt`Share with me
 Q`Thank You
 Q&A`Question and Answer
 Q/A`Question and Answer
@@ -6233,7 +6234,6 @@ SYT`See You Tomorrow| See You There
 SYTYCD`So You Think You Can Dance
 SYWISY`See You When I See You
 S^`What's Up
-Something really good`Very attractive woman
 T-T`Crying
 T.T`Crying
 T2M`Talk To Me
