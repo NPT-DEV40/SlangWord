@@ -208,6 +208,7 @@ public class S_L_D_E extends javax.swing.JFrame {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
     });   
+        
     Search_definition.getDocument().addDocumentListener(new DocumentListener() {
         @Override
         public void insertUpdate(DocumentEvent e) {
@@ -261,15 +262,20 @@ public class S_L_D_E extends javax.swing.JFrame {
 
     private void Edit_SlangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_SlangActionPerformed
         SlangWord slangword = new SlangWord();
+        String dataCopy[][] = slangword.getData();
         String[][] result = new String[slangword.sizeMap][100];
         int row = tableData.getSelectedRow();
+        System.out.println(row);
         int col = tableData.getSelectedColumn();
+        System.out.println(col);
         if (row == col && row == -1)
                 return;
         String Data = (String) tableData.getValueAt(row, col);
         if(col == 2) {
-            slangword.set((String) tableData.getValueAt(row, 1), result[row][2], (String) tableData.getValueAt(row, 2));
-            JOptionPane.showMessageDialog(this, "Da them vao");
+            System.out.println("Old SlangWord: \t" + row + "\t" + dataCopy[row][2]);
+            System.out.println((String) tableData.getValueAt(row, 2));
+            slangword.set((String) tableData.getValueAt(row, 1), dataCopy[row][2], (String) tableData.getValueAt(row, 2));
+            JOptionPane.showMessageDialog(this, "Da chinh sua");
         }
         tableData.setFocusable(false);
     }//GEN-LAST:event_Edit_SlangActionPerformed
